@@ -1,234 +1,209 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Christian Pabón - Barítono Bajo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto&display=swap" rel="stylesheet" />
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #000;
-            color: #fff;
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
-        header {
-            position: fixed;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transition: background 0.3s ease;
-        }
-        header.scrolled {
-            background: rgba(0, 0, 0, 0.95);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-        }
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6em;
-            color: gold;
-            margin: 0;
-            letter-spacing: 1px;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: gold;
-        }
-        section {
-            padding: 100px 20px;
-            max-width: 1100px;
-            margin: auto;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1500x800') center/cover no-repeat;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-        .hero h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3em;
-            color: gold;
-            margin-bottom: 15px;
-        }
-        .hero p {
-            font-size: 1.2em;
-            max-width: 700px;
-            margin-bottom: 20px;
-        }
-        .btn {
-            background: gold;
-            color: black;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        .btn:hover {
-            background: #d4af37;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        .gallery img {
-            width: 100%;
-            border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-        iframe {
-            width: 100%;
-            height: 315px;
-            border: none;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        footer {
-            background: #111;
-            text-align: center;
-            padding: 20px;
-            color: #888;
-            font-size: 0.9em;
-        }
-        .socials a {
-            color: gold;
-            margin: 0 10px;
-            font-size: 1.5em;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .socials a:hover {
-            color: #fff;
-        }
-        h2 {
-            font-family: 'Playfair Display', serif;
-            color: gold;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christian Pabón - Barítono</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+body { font-family: 'Merriweather', serif; background-color: black; color: white; margin:0; padding:0; }
+header { background-color:black; text-align:center; padding:20px; border-bottom:2px solid gold; }
+header img { max-height:100px; }
+nav { background-color:#111; padding:10px; text-align:center; position:sticky; top:0; z-index:1000; }
+nav a { color:gold; margin:0 15px; text-decoration:none; font-weight:bold; }
+nav a:hover { color:white; }
+section { padding:40px 20px; max-width:1200px; margin:auto; }
+h2,h3 { color:gold; text-align:center; }
+.carousel-container { display:flex; overflow-x:auto; scroll-behavior:smooth; gap:10px; padding:10px 0; }
+.carousel-container::-webkit-scrollbar { height:10px; }
+.carousel-container::-webkit-scrollbar-thumb { background-color:gold; border-radius:5px; }
+.carousel-container img { max-height:300px; border:2px solid gold; border-radius:5px; flex-shrink:0; }
+.carousel-buttons { text-align:center; margin-bottom:10px; }
+.carousel-buttons button { background-color:gold; color:black; border:none; padding:8px 12px; margin:5px; cursor:pointer; border-radius:5px; font-weight:bold; }
+.carousel-buttons button:hover { background-color:white; color:gold; }
+.gallery { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:15px; }
+.gallery img { width:100%; border:2px solid gold; border-radius:5px; }
+iframe { width:100%; height:400px; border:none; margin-bottom:20px; }
+footer { text-align:center; padding:20px; background-color:#111; border-top:2px solid gold; }
+.event { background-color:#222; padding:15px; margin-bottom:10px; border-left:5px solid gold; }
+form input, form textarea, form button, form select { width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid gold; background-color:black; color:white; font-family:'Merriweather', serif; }
+form button { background-color:gold; color:black; font-weight:bold; cursor:pointer; border:none; }
+form button:hover { background-color:white; color:gold; }
+img.bio-img { max-width:300px; float:left; margin-right:20px; border:2px solid gold; border-radius:5px; }
+.clearfix::after { content:""; clear:both; display:table; }
+.social-icons a { color:gold; font-size:1.5em; margin:0 10px; text-decoration:none; }
+.social-icons a:hover { color:white; }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Christian Pabón</h1>
-        <nav>
-            <a href="#bio">Bio</a>
-            <a href="#agenda">Agenda</a>
-            <a href="#noticias">Noticias</a>
-            <a href="#fotos">Fotos</a>
-            <a href="#videos">Videos</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
 
-    <section class="hero">
-        <h2>Barítono Bajo</h2>
-        <p>Llevando la magia de la ópera y la canción a cada escenario.</p>
-        <a href="#videos" class="btn">Ver videos</a>
-    </section>
+<header>
+<img src="https://drive.google.com/uc?id=1CUWgA1zEPdKl2VFHxkFT9edDKqJ12Izw" alt="Logo Christian Pabón">
+</header>
 
-    <section id="bio">
-        <h2>Biografía</h2>
-        <p>Christian Pabón es un barítono bajo con una voz potente y versátil, reconocido por su interpretación apasionada y su presencia escénica. Ha participado en producciones de ópera y conciertos en importantes escenarios, compartiendo su talento con públicos nacionales e internacionales.</p>
-    </section>
+<nav>
+<a href="#performances">Performances</a>
+<a href="#biography">Biography</a>
+<a href="#schedule">Schedule</a>
+<a href="#videos">Videos</a>
+<a href="#portraits">Portraits</a>
+<a href="#social">Redes Sociales</a>
+<a href="#contact">Contacto</a>
+</nav>
 
-    <section id="agenda">
-        <h2>Agenda</h2>
-        <ul>
-            <li>22 de Agosto 2025 - Natal Brasil - "Ópera y Canción"</li>
-            <li>13 de Septiembre 2025 - Teatro Principal UNET - "Ópera y Canción"</li>
-            <li>20 de Octubre 2025 - Concierto en Sala Cultural Táchira</li>
-        </ul>
-    </section>
+<section id="performances">
+<h2>Performance and Productions</h2>
 
-    <section id="noticias">
-        <h2>Noticias</h2>
-        <p>Próximamente: Lanzamiento de nueva producción audiovisual con arreglos para guitarra y voz.</p>
-    </section>
+<h3>Gala Opera y Zarzuela Táchira, Venezuela</h3>
+<div class="carousel-buttons">
+<button onclick="scrollLeft('gala')">⭠</button>
+<button onclick="scrollRight('gala')">⭢</button>
+</div>
+<div id="gala" class="carousel-container">
+<img src="https://drive.google.com/uc?id=11tsvz5pEU_qdONhzBEGE9KSAj8lmcp9o" alt="Gala 1">
+<img src="https://drive.google.com/uc?id=1VTYFWZcR04xWqujFxqTIxWtlm3E4rBZN" alt="Gala 2">
+<img src="https://drive.google.com/uc?id=1Vc6qz-suJLWOWj02BHi6FZ50V4rS6LlU" alt="Gala 3">
+</div>
 
-    <section id="fotos">
-        <h2>Galería de Fotos</h2>
-        <div class="gallery">
-            <img src="https://via.placeholder.com/400x300" alt="Foto concierto" />
-            <img src="https://via.placeholder.com/400x300" alt="Foto ensayo" />
-            <img src="https://via.placeholder.com/400x300" alt="Foto backstage" />
-        </div>
-    </section>
+<h3>Opera Alice de Ángel Hernández Lovera (2024) Caracas, Venezuela</h3>
+<div class="carousel-buttons">
+<button onclick="scrollLeft('alice')">⭠</button>
+<button onclick="scrollRight('alice')">⭢</button>
+</div>
+<div id="alice" class="carousel-container">
+<img src="https://drive.google.com/uc?id=12RQpjkimirzqZqjg435E-d1IvLiOIGAA" alt="Alice 1">
+<img src="https://drive.google.com/uc?id=12_3bTy_qj_sAmCRuVz7W6J9ASoWkOn7X" alt="Alice 2">
+<img src="https://drive.google.com/uc?id=12Y51-lBAnI7R8k9QkIhaxMGkuuWLvh0O" alt="Alice 3">
+<img src="https://drive.google.com/uc?id=12M_GnT6cUZKeOGVKgx5Racn8BZUXLDW2" alt="Alice 4">
+</div>
 
-    <section id="videos">
-        <h2>Videos</h2>
-        <iframe src="https://www.youtube.com/watch?v=xJ0jzlH2Nbg" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/watch?v=hr9RZcglzLg" allowfullscreen></iframe>
-    </section>
+<h3>Le Nozze di Figaro (2024) Berlin Opera Academy Berlín, Alemania</h3>
+<div class="carousel-buttons">
+<button onclick="scrollLeft('figaro')">⭠</button>
+<button onclick="scrollRight('figaro')">⭢</button>
+</div>
+<div id="figaro" class="carousel-container">
+<img src="https://drive.google.com/uc?id=12VyfZgK_dGEdagTc_9EcQTlGdu_j_TcY" alt="Figaro 1">
+<img src="https://drive.google.com/uc?id=12Tf9g5F1fD224fMILD4SDK9JAdEArH07" alt="Figaro 2">
+<img src="https://drive.google.com/uc?id=12RaqCNfrL2eBg2cZGmhZt4htlcUYQpYp" alt="Figaro 3">
+<img src="https://drive.google.com/uc?id=1WS1E87HSa3olfHz2ZUY-IrylX5sjeyrv" alt="Figaro 4">
+<img src="https://drive.google.com/uc?id=12ePN66RxyqWp9BWJ6UH65jtwMhQVX7Ce" alt="Figaro 5">
+<img src="https://drive.google.com/uc?id=1WXRKy_sBZh3zHe0zDVADdnOT0ml3CzWx" alt="Figaro 6">
+<img src="https://drive.google.com/uc?id=12eTXKDuVUVVt0ffUyzdULOmFLWHtyrd6" alt="Figaro 7">
+<img src="https://drive.google.com/uc?id=12iFaYzVxwOsrMZoxUcVyNPB3popWvxFT" alt="Figaro 8">
+<img src="https://drive.google.com/uc?id=12haTZY9aTmFDUmC7hT_91zxHx_zNaRTA" alt="Figaro 9">
+</div>
 
-    <section id="contacto">
-        <h2>Contacto</h2>
-        <p>Email: <a href="mailto:christianjpabonc@gmail.com" style="color:gold;">christianjpabonc@gmail.com</a></p>
-        <div class="socials">
-            <a href="https://www.instagram.com/christian.baritone/" target="_blank">Instagram</a>
-            <a href="https://facebook.com" target="_blank">Facebook</a>
-            <a href="https://www.tiktok.com/@christian.pabon" target="_blank">TikTok</a>
-        </div>
-    </section>
+<h3>Cantata Criolla (2023) Táchira, Venezuela</h3>
+<div class="carousel-buttons">
+<button onclick="scrollLeft('cantata')">⭠</button>
+<button onclick="scrollRight('cantata')">⭢</button>
+</div>
+<div id="cantata" class="carousel-container">
+<img src="https://drive.google.com/uc?id=12FMPL2K4_0SRP6ioY0B986kVTCA9aAH-" alt="Cantata 1">
+<img src="https://drive.google.com/uc?id=1XCN5kVoQT5xS8_aBk1IQByZu7HLXXaT1" alt="Cantata 2">
+<img src="https://drive.google.com/uc?id=1XJ7zu5oXoC8silR7Ju_kb0RYLf2VphHU" alt="Cantata 3">
+<img src="https://drive.google.com/uc?id=1XMInrNG0WjweQDpz8BDg6m8Pj4YKpflz" alt="Cantata 4">
+<img src="https://drive.google.com/uc?id=1208tm0FPN2ZbEYPztNzTLdJBa9A7Gc69" alt="Cantata 5">
+<img src="https://drive.google.com/uc?id=121RbSfk87VhovaOHy9JC9K7bbb5wAeQ6" alt="Cantata 6">
+<img src="https://drive.google.com/uc?id=1223XVD7mbpY_rJha4yZ3eAMH9Av713KM" alt="Cantata 7">
+<img src="https://drive.google.com/uc?id=122Hb0eXGGOvgve7EWog2Mf4yrKKN9x24" alt="Cantata 8">
+<img src="https://drive.google.com/uc?id=123E5G32_K8FVZMWwWT0aHX1n-mi14foW" alt="Cantata 9">
+<img src="https://drive.google.com/uc?id=124chfgRubwFma0IWVujOs9mKPzIXrinm" alt="Cantata 10">
+<img src="https://drive.google.com/uc?id=1X5Chp53wxWyG0bGdZ_wJpI58fc2YA1Pm" alt="Cantata 11">
+</div>
+</section>
 
-    <footer>
-        &copy; 2025 Christian Pabón. Todos los derechos reservados.
-    </footer>
+<script>
+function scrollLeft(id){ document.getElementById(id).scrollBy({left:-300, behavior:'smooth'}); }
+function scrollRight(id){ document.getElementById(id).scrollBy({left:300, behavior:'smooth'}); }
+</script>
 
-    <script>
-        // Cambiar fondo header al hacer scroll
-        window.addEventListener('scroll', function () {
-            const header = document.querySelector('header');
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
+<section id="biography">
+<h2>Biography</h2>
+<div class="clearfix">
+<img class="bio-img" src="https://drive.google.com/uc?id=11pYTOQD4DHlgXkuAIcVAM7zOA9rgl3WW" alt="Christian Pabón">
+<p>
+Christian Pabón – Bajo barítono venezolano<br><br>
+Christian Pabón es un destacado bajo barítono originario de Venezuela, con una sólida trayectoria en los escenarios más importantes de su país, así como en producciones internacionales en Berlín y Guadalajara. Inició su formación musical en El Sistema Táchira, donde participó activamente en numerosos conciertos y montajes operísticos junto a la Academia de Ópera del maestro Gregory Pino. Con esta agrupación, participó en los estrenos mundiales de las óperas venezolanas El Jamás Vencido de Edwin García y Ella y Él de Gregory Pino.<br><br>
+Ha cantado en múltiples producciones operísticas en San Cristóbal y ha sido invitado como solista en ciudades como Mérida, Valencia, Falcón y Caracas. En 2020, interpretó el rol protagónico de Mosè en la ópera Mosè in Egitto de Rossini, bajo la dirección escénica de Marco Gandini y musical de Christian Vásquez, acompañado por el maestro preparador Massimiliano Bullo.<br><br>
+En 2023, fue galardonado con el Premio Brasil en el Concurso Internacional de Canto Linus Lerner en Guadalajara, México. Ese mismo año, interpretó el personaje del Diablo en una versión escenificada de la Cantata Criolla de Antonio Estévez, una de las obras más emblemáticas del repertorio sinfónico coral venezolano.<br><br>
+Su talento fue reconocido en 2018 con el segundo lugar y la mención a la Mejor Voz en el Concurso Nacional de Canto Alfredo Hollander, uno de los certámenes de mayor exigencia en Venezuela.<br><br>
+Ha trabajado con distinguidos directores como Tom Seligman, Elisa Vegas, Rodolfo Saglimbeni, Christophe Talmont y Andrés Ascanio, y ha perfeccionado su técnica vocal e interpretativa con maestros como Massimiliano Bullo, Marco Gandini, Lorraine DiSimone, Aquiles Machado, Isabel Palacios, Lucy Ferrero, Gregory Pino, entre otros.<br><br>
+En julio de 2024, fue seleccionado para formar parte del Berlin Opera Academy, donde interpretó el rol de Fígaro en Le Nozze di Figaro de Mozart, bajo la dirección musical de Tom Seligman y escénica de Catherine Liberovici. Ese mismo año, participó como solista en la Novena Sinfonía de Beethoven junto a la Orquesta Sinfónica Simón Bolívar, en el marco del evento internacional Sistema Global.<br><br>
+Hasta la fecha, ha interpretado como solista la Novena Sinfonía de Beethoven en siete conciertos a lo largo del país, reafirmando su presencia en el repertorio sinfónico. Próximamente, en agosto de 2025, cantará en una gala en Natal, Brasil, junto al maestro Linus Lerner, como parte de los premios obtenidos en Guadalajara, presentando un repertorio variado de arias operísticas con la Orquesta de Natal.<br><br>
+En este mismo año, sumará a su repertorio el solo del Réquiem de Fauré, y regresará al exigente rol del barítono en Carmina Burana de Carl Orff, obra con la que ha demostrado su versatilidad vocal.<br><br>
+Actualmente, Christian Pabón forma parte activa de la Compañía de Ópera del Teatro Teresa Carreño, donde ha participado en destacadas producciones como L’elisir d’amore de Donizetti, en el papel de Dulcamara, y el estreno mundial de Alice del compositor Ángel Lovera, en el rol de Absolem.<br><br>
+Entre los roles que ha interpretado se encuentran Fígaro, Gianni Schicchi, Tonio, Dulcamara, Don Pasquale, Colline, Mosè, Sarastro, Colas, Marchese D’Obigny y Barone Douphol, Nogales, Héctor, Gómez, Absolem.<br><br>
+En el repertorio sinfónico y coral, ha sido solista en obras como la Cantata Criolla, Carmina Burana, Novena Sinfonía de Beethoven, Réquiem de Mozart y Magnificat de Bach.
+</p>
+</div>
+</section>
 
-        // Animar secciones al entrar en viewport
-        const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.2 });
+<section id="schedule">
+<h2>Schedule</h2>
+<div class="event">
+<strong>Gala Lírica con el maestro Linus Lerner</strong><br>
+27 de agosto de 2025 - Natal, Brasil
+</div>
+<div class="event">
+<strong>Concierto con piano, guitarra y voz</strong><br>
+17 de septiembre de 2025 - San Cristóbal, Estado Táchira, Venezuela
+</div>
+</section>
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+<section id="videos">
+<h2>Videos</h2>
+<iframe src="https://www.youtube.com/embed/xJ0jzlH2Nbg" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/eM3goHLHRIQ" allowfullscreen></iframe>
+</section>
+
+<section id="portraits">
+<h2>Portraits</h2>
+<div class="gallery">
+<img src="https://drive.google.com/uc?id=11pYTOQD4DHlgXkuAIcVAM7zOA9rgl3WW" alt="Portrait 1">
+<img src="https://drive.google.com/uc?id=11mnFGvKqgh3T-Lo4GogvR4SLdNmY3MZH" alt="Portrait 2">
+<img src="https://drive.google.com/uc?id=11nJzUu_mnhFfwpEd-WkuwYHBeIkbHBue" alt="Portrait 3">
+<img src="https://drive.google.com/uc?id=11mNWE73SOt2s22YYd_PFWXMJIP2Yzkoj" alt="Portrait 4">
+<img src="https://drive.google.com/uc?id=11mEc9crVQhPzR5dOMm_DfwZw8mIK0iOp" alt="Portrait 5">
+<img src="https://drive.google.com/uc?id=11jP_Hq-NzGATen8B0QVulM5ypCxZyo0R" alt="Portrait 6">
+<img src="https://drive.google.com/uc?id=11gms738lFUFzhphLUSaPsmHf6Op8E5ow" alt="Portrait 7">
+<img src="https://drive.google.com/uc?id=1WKH1m4jgZoZRAHMGHnSm63d5kfB2I_c-" alt="Portrait 8">
+<img src="https://drive.google.com/uc?id=1WLb2KpJfLUWm1yUCRVL0UYPcdzM6iYWb" alt="Portrait 9">
+<img src="https://drive.google.com/uc?id=1WM4s8yaeCqqhFibIb69Olj8DOwudwrTx" alt="Portrait 10">
+<img src="https://drive.google.com/uc?id=1WRQDdM3iHQoeRHvJ09pBdPDJiGVihQGe" alt="Portrait 11">
+<img src="https://drive.google.com/uc?id=1YQCedHaAuacjvg6xACGd9xb1KpDu8VZ-" alt="Portrait 12">
+<img src="https://drive.google.com/uc?id=11pcbU8BQcvNqCwXEjy17T7nD59PPjsL6" alt="Portrait 13">
+<img src="https://drive.google.com/uc?id=11pzBQquQMOOeQ-TnLMePYSg8b2u5UuGb" alt="Portrait 14">
+</div>
+</section>
+
+<section id="social">
+<h2>Redes Sociales</h2>
+<div class="social-icons">
+<a href="https://www.instagram.com/christian.baritone/" target="_blank">Instagram</a>
+<a href="https://www.tiktok.com/@christian.pabon" target="_blank">TikTok</a>
+</div>
+<h3>Instagram Feed</h3>
+<iframe src="https://widgets.sociablekit.com/instagram-feed/iframe/25588404"></iframe>
+</section>
+
+<section id="contact">
+<h2>Contacto</h2>
+<form action="mailto:christianjpabonc@gmail.com" method="post" enctype="text/plain">
+<input type="text" name="name" placeholder="Nombre" required>
+<input type="email" name="email" placeholder="Correo electrónico" required>
+<input type="text" name="subject" placeholder="Asunto" required>
+<textarea name="message" rows="6" placeholder="Mensaje" required></textarea>
+<button type="submit">Enviar</button>
+</form>
+<p>O contáctame directamente al teléfono: +58 412-8630777</p>
+<p>Correo: christianjpabonc@gmail.com</p>
+</section>
+
+<footer>
+<p>&copy; 2025 Christian Pabón</p>
+</footer>
+
 </body>
 </html>
-
